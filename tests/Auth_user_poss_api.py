@@ -6,7 +6,7 @@ import requests
 class TestUserAuth:
     def test_auth_user(self):
         data = {
-            'email':'super@krit.pro',
+            'email':'rmtest@krit.pro',
             'password':'super'
         }
         response1=requests.post("https://riskhunter.krit.pro/sign-in", data=data)
@@ -39,7 +39,7 @@ class TestUserAuth:
     @pytest.mark.parametrize('condition', exclude_params)
     def test_negativ_auth_check(self, condition):
         data = {
-            'email': 'admintest@krit.pro',
+            'email': 'rmtest@krit.pro',
             'password': 'super'
         }
         response1 = requests.post("https://riskhunter.krit.pro/sign-in", data=data)
