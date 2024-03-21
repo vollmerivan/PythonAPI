@@ -6,10 +6,10 @@ import requests
 class TestUserAuth:
     def test_auth_user(self):
         data = {
-            'email':'vinkotov@example.com',
-            'password':'1234'
+            'email':'super@krit.pro',
+            'password':'super'
         }
-        response1=requests.post("https://playground.learnqa.ru/api/user/login", data=data)
+        response1=requests.post("https://riskhunter.krit.pro/sign-in", data=data)
 
         assert "auth_sid" in response1.cookies, "There is no auth cookie in the response"
         assert "x-csrf-token" in response1.headers, "There is no CSRF token header in the response"
@@ -20,7 +20,7 @@ class TestUserAuth:
         user_id_from_auth_method=response1.json()["user_id"]
 
         response2=requests.get(
-            "https://playground.learnqa.ru/api/user/auth",
+            "https://riskhunter.krit.pro/sign-in",
             headers={"x-csrf-token":token},
             cookies={"auth_sid":auth_sid}
         )
@@ -39,10 +39,10 @@ class TestUserAuth:
     @pytest.mark.parametrize('condition', exclude_params)
     def test_negativ_auth_check(self, condition):
         data = {
-            'email': 'vinkotov@example.com',
-            'password': '1234'
+            'email': 'admintest@krit.pro',
+            'password': 'super'
         }
-        response1 = requests.post("https://playground.learnqa.ru/api/user/login", data=data)
+        response1 = requests.post("https://riskhunter.krit.pro/sign-in", data=data)
 
         assert "auth_sid" in response1.cookies, "There is no auth cookie in the response"
         assert "x-csrf-token" in response1.headers, "There is no CSRF token header in the response"
@@ -53,12 +53,12 @@ class TestUserAuth:
 
         if condition == "no_cookie":
             response2 = requests.get(
-                "https://playground.learnqa.ru/api/user/auth",
+                "https://riskhunter.krit.pro/sign-in",
                 headers={"x-csrf-token":token}
             )
         else:
             response2=requests.get(
-                "https://playground.learnqa.ru/api/user/auth",
+                "https://riskhunter.krit.pro/sign-in",
                 cookies={"auth_sid":auth_sid}
             )
 
