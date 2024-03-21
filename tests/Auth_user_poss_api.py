@@ -9,7 +9,7 @@ class TestUserAuth:
             'email':'rmtest@krit.pro',
             'password':'super'
         }
-        response1=requests.post("https://riskhunter.krit.pro/sign-in", data=data)
+        response1=requests.post("https://riskhunter.krit.pro/api/v1/auth/SignIn", data=data)
 
         assert "auth_sid" in response1.cookies, "There is no auth cookie in the response"
         assert "x-csrf-token" in response1.headers, "There is no CSRF token header in the response"
@@ -20,7 +20,7 @@ class TestUserAuth:
         user_id_from_auth_method=response1.json()["user_id"]
 
         response2=requests.get(
-            "https://riskhunter.krit.pro/sign-in",
+            "https://riskhunter.krit.pro/api/v1/users/me",
             headers={"x-csrf-token":token},
             cookies={"auth_sid":auth_sid}
         )
