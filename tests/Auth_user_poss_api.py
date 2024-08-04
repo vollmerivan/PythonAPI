@@ -13,7 +13,7 @@ class TestUserAuth(BaseCase):
     ]
     def setup(self):
         data = {
-            'email':'rmtest@krit.pro',
+            'email':'rmtest2@krit.pro',
             'password':'super'
         }
         response1=requests.post("https://riskhunter.krit.pro/api/v1/auth/SignIn", data=data)
@@ -31,10 +31,9 @@ class TestUserAuth(BaseCase):
             response2,
             "user_id",
             self.user_id_from_auth_method,
-            "User id from auth method is not equal to user id from check method"
+            'User id from auth method is not equal to user id from check method'
         )
-
-     @pytest.mark.parametrize('condition', exclude_params)
+    @pytest.mark.parametrize ('condition', exclude_params)
     def test_negativ_auth_check(self, condition):
         if condition == "no_cookie":
             response2 = requests.get(
