@@ -44,3 +44,6 @@ class TestFirstAPI:
 
         # Проверка кода ответа
         assert response2.status_code == 200, "Wrong response code"
+
+
+  #провоеирим

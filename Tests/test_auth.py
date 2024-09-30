@@ -23,3 +23,8 @@ class TestFirstAPI:
         # Проверка наличия токена в ответе
         assert "token" in response_dict, "There is no field 'token' in the response"
         assert response_dict["token"] is not None, "Token should not be None"
+
+
+
+        #провоеирим
+

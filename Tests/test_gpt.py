@@ -29,3 +29,5 @@ except requests.exceptions.RequestException as e:
     print(f"Произошла ошибка при выполнении запроса: {e}")
 except AssertionError as assert_error:
     print(f"Ошибка проверки: {assert_error}")
+
+    # провоеирим
